@@ -22,7 +22,7 @@ export default class Searcher {
             event.preventDefault();
 
             this.servers.forEach(server => {
-                this.search(this.domainInput.value, server.ip, server.el).then(res => {
+                this.search(this.domainInput.value, server.ip, document.querySelector(`#${server.country}`)).then(res => {
                     this.loading(res.element, res.text);
                 });
             });
@@ -42,14 +42,19 @@ export default class Searcher {
                 }
             }
 
-            xhr.open('GET', `/?domain=${domainName}&type=A&provider=${dnsProvider}`);
+            xhr.open('GET', `/?domain=${domainName}&provider=${dnsProvider}`);
             xhr.send();
         });
     }
 
     private loading(element: HTMLElement, content: string = ''): void
     {
+        if (content === "unknown") {
+            element.innerHTML = '<i class="fa-duotone fa-circle-xmark fa-lg"></i>';
+            return;
+        }
+
         element.innerHTML = content === '' ? '<img src="/assets/images/spinner.svg" alt="Loading..." class="spinner-img" />'
-            : content;
+            : `<i class="fa-duotone fa-circle-check fa-lg"></i> ${content}`;
     }
 }

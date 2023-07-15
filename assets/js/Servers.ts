@@ -6,28 +6,46 @@ export default class Servers
     {
         return [
             {
-                el: <HTMLElement> document.querySelector('#google-ip'),
                 ip: '8.8.8.8',
+                country: 'usa',
+                location: 'Los Angeles',
+                provider: 'Google'
             },
             {
-                el: <HTMLElement> document.querySelector('#cloudflare-ip'),
-                ip: '1.1.1.1',
+                ip: '165.232.38.7',
+                country: 'uk',
+                location: 'London',
+                provider: 'Digital Ocean',
             },
             {
-                el: <HTMLElement> document.querySelector('#control-d-ip'),
-                ip: '76.76.2.0',
+                ip: '46.246.29.69',
+                country: 'sweden',
+                location: 'Stockholm',
+                provider: 'GleSYS AB'
             },
             {
-                el: <HTMLElement> document.querySelector('#quad-9-ip'),
-                ip: '9.9.9.9',
+                ip: '185.101.211.184',
+                country: 'france',
+                location: 'Montpellier',
+                provider: 'Absolight SARL'
             },
             {
-                el: <HTMLElement> document.querySelector('#open-dns-ip'),
-                ip: '208.67.222.222',
+                ip: '202.53.95.14',
+                country: 'india',
+                location: 'Hyderabad',
+                provider: 'Nettlinx Limited'
             },
             {
-                el: <HTMLElement> document.querySelector('#clean-browsing-ip'),
-                ip: '185.228.168.9',
+                ip: '13.239.88.95',
+                country: 'australia',
+                location: 'Sydney',
+                provider: 'Amazon'
+            },
+            {
+                ip: '223.6.6.41',
+                country: 'china',
+                location: 'Huangzhou',
+                provider: 'Alibaba'
             },
         ];
     }

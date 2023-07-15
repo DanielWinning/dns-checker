@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#ED1C24;}
+	.st1{fill:#F0F0F0;}
+	.st2{fill:#0071BC;}
+</style>
+<title>France (2)</title>
+<g>
+	<g id="France">
+		<circle class="st0" cx="15" cy="15" r="15"/>
+		<path class="st1" d="M15,0C6.7,0,0,6.7,0,15s6.7,15,15,15c1.7,0,3.4-0.3,5.1-0.9V0.9C18.4,0.3,16.7,0,15,0z"/>
+		<path class="st2" d="M0,15C0,8.6,4,3,10,0.9v28.3C4,27,0,21.4,0,15z"/>
+	</g>
+</g>
+</svg>

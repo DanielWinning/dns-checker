@@ -6,20 +6,15 @@ class QueryHandler
 {
     /**
      * @param string $domain
-     * @param string $type
      * @param string $dnsProvider
      *
-     * @return bool|string
+     * @return string
      */
-    public function handleRequest(string $domain, string $type = 'A', string $dnsProvider = '1.1.1.1'): bool|string
+    public function handleRequest(string $domain, string $dnsProvider = '1.1.1.1'): string
     {
         $command = sprintf('dig %s +short %s', $dnsProvider, $domain);
         exec($command, $output, $error);
 
-        if ($error) {
-            return false;
-        }
-
-        return $output[0] ?? 'unknown - did you include the subdomain (www)';
+        return !$error && isset($output[0]) ? $output[0] : 'unknown';
     }
 }

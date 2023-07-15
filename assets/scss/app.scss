@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,600;1,800&display=swap');
+@import url('../../node_modules/@fortawesome/fontawesome-pro/css/all.min.css');
+
 * {
   padding: 0;
   margin: 0;
@@ -40,25 +43,34 @@ form {
     }
   }
 }
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
 .results {
   border: 1px solid #ebebeb;
 
   &> div {
     display: grid;
     grid-template-columns: 1fr 4fr;
+    height: 80px;
 
     span {
       padding: .75rem;
       line-height: 3rem;
       border-bottom: 1px solid #ebebeb;
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
 
       &:first-of-type {
         border-right: 1px solid #ebebeb;
         font-weight: 600;
+        justify-content: center;
       }
       &:last-of-type {
-        display: flex;
-        align-items: center;
+        font-weight: 600;
       }
     }
     &:last-of-type {
@@ -71,4 +83,24 @@ form {
 .spinner-img {
   height: 46px;
   width: auto;
+}
+.fa-circle-xmark {
+  color: #a82d2d;
+}
+.fa-circle-check {
+  color: #267c36;
+  margin-right: .5rem;
+}
+.flag-icon {
+  height: 32px;
+  width: auto;
+}
+.content {
+  margin: 1rem 0;
+  font-size: 1rem;
+  color: #4d4d4d;
+
+  p {
+    margin: .75rem 0;
+  }
 }

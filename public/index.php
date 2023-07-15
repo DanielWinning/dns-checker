@@ -8,7 +8,7 @@ $requestUri = $_SERVER['REQUEST_URI'];
 $viewsPath = sprintf('%s/views', dirname(__DIR__, 1));
 
 if ($requestUri === '/') {
-    require_once sprintf('%s/index.view.php', $viewsPath);
+    require_once sprintf('%s/index.view.html', $viewsPath);
     return;
 }
 
@@ -29,8 +29,8 @@ foreach ($queryParts as $queryPart) {
     }
 }
 
-if (!isset($queryParams['domain']) || !isset($queryParams['type']) || !isset($queryParams['provider'])) {
+if (!isset($queryParams['domain']) || !isset($queryParams['provider'])) {
     return false;
 }
 
-echo (new QueryHandler())->handleRequest($queryParams['domain'], $queryParams['type'], $queryParams['provider']);
+echo (new QueryHandler())->handleRequest($queryParams['domain'], $queryParams['provider']);

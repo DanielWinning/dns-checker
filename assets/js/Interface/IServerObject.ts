@@ -1,5 +1,7 @@
 export default interface IServerObject
 {
-    el: HTMLElement;
     ip: string;
+    country: string;
+    location?: string;
+    provider?: string;
 }

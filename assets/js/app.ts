@@ -1,5 +1,5 @@
 import '../scss/app.scss';
-import Searcher from "./Searcher";
+import Searcher from './Searcher';
 
 document.addEventListener('DOMContentLoaded', () => {
     new Searcher(
