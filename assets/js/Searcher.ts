@@ -1,6 +1,6 @@
 import IDomainSearchResponse from './Interface/IDomainSearchResponse';
-import Servers from "./Servers";
-import IServerObject from "./Interface/IServerObject";
+import Servers from './Servers';
+import IServerObject from './Interface/IServerObject';
 
 export default class Searcher {
     searchButton: HTMLButtonElement;
@@ -13,19 +13,23 @@ export default class Searcher {
         this.domainInput = domainInput;
         this.servers = Servers.getServers();
 
-        this.searchButton.addEventListener('click', event => {
+        this.addSearchHandler();
+    }
+
+    private addSearchHandler(): void
+    {
+        this.searchButton.addEventListener('click', (event: Event) => {
             event.preventDefault();
-            let domainName = this.domainInput.value;
 
             this.servers.forEach(server => {
-                this.search(domainName, 'A', server.ip, server.el).then(res => {
+                this.search(this.domainInput.value, server.ip, server.el).then(res => {
                     this.loading(res.element, res.text);
                 });
             });
         });
     }
 
-    async search(domainName: string, dnsType: string, dnsProvider: string, outputElement: HTMLElement): Promise<IDomainSearchResponse>
+    private async search(domainName: string, dnsProvider: string, outputElement: HTMLElement): Promise<IDomainSearchResponse>
     {
         this.loading(outputElement);
 
@@ -38,12 +42,12 @@ export default class Searcher {
                 }
             }
 
-            xhr.open('GET', `/?domain=${domainName}&type=${dnsType}&provider=${dnsProvider}`);
+            xhr.open('GET', `/?domain=${domainName}&type=A&provider=${dnsProvider}`);
             xhr.send();
         });
     }
 
-    loading(element: HTMLElement, content: string = ''): void
+    private loading(element: HTMLElement, content: string = ''): void
     {
         element.innerHTML = content === '' ? '<img src="/assets/images/spinner.svg" alt="Loading..." class="spinner-img" />'
             : content;
