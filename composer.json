@@ -1,0 +1,15 @@
+{
+    "name": "danny/dns-tool",
+    "autoload": {
+        "psr-4": {
+            "DannyXCII\\DnsTool\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel Winning",
+            "email": "daniel@winningwebdesign.co.uk"
+        }
+    ],
+    "require": {}
+}
