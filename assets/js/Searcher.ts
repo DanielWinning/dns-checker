@@ -1,5 +1,3 @@
-import {Problem} from "webpack-cli";
-
 export default class Searcher {
     searchButton: HTMLButtonElement;
     domainInput: HTMLInputElement;
@@ -12,6 +10,32 @@ export default class Searcher {
         this.searchButton.addEventListener('click', event => {
             event.preventDefault();
             let domainName = this.domainInput.value,
+                servers = [
+                    {
+                        el: <HTMLElement> document.querySelector('#google-ip'),
+                        ip: '8.8.8.8',
+                    },
+                    {
+                        el: <HTMLElement> document.querySelector('#cloudflare-ip'),
+                        ip: '1.1.1.1',
+                    },
+                    {
+                        el: <HTMLElement> document.querySelector('#control-d-ip'),
+                        ip: '76.76.2.0',
+                    },
+                    {
+                        el: <HTMLElement> document.querySelector('#quad-9-ip'),
+                        ip: '9.9.9.9',
+                    },
+                    {
+                        el: <HTMLElement> document.querySelector('#open-dns-ip'),
+                        ip: '208.67.222.222',
+                    },
+                    {
+                        el: <HTMLElement> document.querySelector('#clean-browsing-ip'),
+                        ip: '185.228.168.9',
+                    },
+                ],
                 targetSelectors = {
                     google: <HTMLElement> document.querySelector('#google-ip'),
                     cloudflare: <HTMLElement> document.querySelector('#cloudflare-ip'),
@@ -29,58 +53,10 @@ export default class Searcher {
                     cleanbrowsing: '185.228.168.9',
                 };
 
-            this.search(
-                domainName,
-                'A',
-                dnsServers.cloudflare,
-                targetSelectors.cloudflare
-            ).then((res: IDomainSearchResponse) => {
-                this.loading(res.element, res.text);
-            });
-
-            this.search(
-                domainName,
-                'A',
-                dnsServers.google,
-                targetSelectors.google
-            ).then(res => {
-                this.loading(res.element, res.text);
-            });
-
-            this.search(
-                domainName,
-                'A',
-                dnsServers.controld,
-                targetSelectors.controld
-            ).then(res => {
-                this.loading(res.element, res.text);
-            });
-
-            this.search(
-                domainName,
-                'A',
-                dnsServers.quad9,
-                targetSelectors.quad9
-            ).then(res => {
-                this.loading(res.element, res.text);
-            });
-
-            this.search(
-                domainName,
-                'A',
-                dnsServers.opendns,
-                targetSelectors.opendns
-            ).then(res => {
-                this.loading(res.element, res.text);
-            });
-
-            this.search(
-                domainName,
-                'A',
-                dnsServers.cleanbrowsing,
-                targetSelectors.cleanbrowsing
-            ).then(res => {
-                this.loading(res.element, res.text);
+            servers.forEach(server => {
+                this.search(domainName, 'A', server.ip, server.el).then(res => {
+                    this.loading(res.element, res.text);
+                });
             });
         });
     }
