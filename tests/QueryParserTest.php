@@ -17,11 +17,26 @@ class QueryParserTest extends TestCase
      */
     #[Test]
     #[DataProvider('requestUriParameterProvider')]
-    public function testItParsesQueryParametersCorrectly(array $expected, string $uri): void
+    public function testItParsesQueryParameters(array $expected, string $uri): void
     {
         $testClass = new QueryParser($uri);
 
         self::assertEquals($expected, $testClass->getQueryParams());
+    }
+
+    /**
+     * @param string $expected
+     * @param string $uri
+     *
+     * @return void
+     */
+    #[Test]
+    #[DataProvider('requestUriProvider')]
+    public function testItParsesRequestUri(string $expected, string $uri): void
+    {
+        $testClass = new QueryParser($uri);
+
+        self::assertEquals($expected, $testClass->getUri());
     }
 
     /**
@@ -42,6 +57,35 @@ class QueryParserTest extends TestCase
                     'name' => 'test',
                 ],
                 'uri' => '/testing/?hello=world&name=test/',
+            ],
+        ];
+    }
+
+    /**
+     * @return array[]
+     */
+    public static function requestUriProvider(): array
+    {
+        return [
+            [
+                'expected' => '',
+                'uri' => '/',
+            ],
+            [
+                'expected' => 'hello/world',
+                'uri' => '/hello/world?name=test',
+            ],
+            [
+                'expected' => 'hello/world',
+                'uri' => '/hello/world?name=test/',
+            ],
+            [
+                'expected' => '',
+                'uri' => '/?name=test',
+            ],
+            [
+                'expected' => '',
+                'uri' => '?name=test',
             ],
         ];
     }

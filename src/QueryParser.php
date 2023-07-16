@@ -17,6 +17,11 @@ class QueryParser
         }
     }
 
+    /**
+     * @param string $queryString
+     *
+     * @return void
+     */
     private function setQueryParams(string $queryString): void
     {
         $splitQueries = explode('&', $queryString);
@@ -26,16 +31,27 @@ class QueryParser
         }
     }
 
+    /**
+     * @return string
+     */
     public function getUri(): string
     {
         return $this->uri;
     }
 
+    /**
+     * @param string $name
+     *
+     * @return ?string
+     */
     public function getQueryParam(string $name): ?string
     {
         return $this->queryParams[$name] ?? null;
     }
 
+    /**
+     * @return array
+     */
     public function getQueryParams(): array
     {
         return $this->queryParams;
