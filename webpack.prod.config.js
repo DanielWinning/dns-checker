@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: './assets/js/app.ts',
-    watch: true,
+    watch: false,
     module: {
         rules: [
             {
@@ -22,5 +22,16 @@ module.exports = {
     output: {
         filename: 'app.js',
         path: path.resolve(__dirname, 'public/assets/js')
-    }
+    },
+    plugins: [
+        {
+            apply: (compiler) => {
+                compiler.hooks.done.tap('DonePlugin', (stats) => {
+                    setTimeout(() => {
+                        process.exit(0);
+                    });
+                });
+            }
+        }
+    ]
 }
