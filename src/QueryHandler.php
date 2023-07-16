@@ -1,6 +1,6 @@
 <?php
 
-namespace DannyXCII\DnsTool;
+namespace WinningSoftware\DNSTool;
 
 class QueryHandler
 {

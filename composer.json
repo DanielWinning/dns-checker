@@ -2,14 +2,14 @@
     "name": "danny/dns-tool",
     "autoload": {
         "psr-4": {
-            "DannyXCII\\DnsTool\\": "src/"
+            "WinningSoftware\\DNSTool\\": "src/",
+            "WinningSoftware\\Tests\\": "tests/"
         }
     },
-    "authors": [
-        {
-            "name": "Daniel Winning",
-            "email": "daniel@winningwebdesign.co.uk"
-        }
-    ],
-    "require": {}
+    "scripts": {
+        "test": "vendor/bin/phpunit --testdox --colors=always"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0.7"
+    }
 }
