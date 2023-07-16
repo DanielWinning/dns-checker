@@ -10,31 +10,23 @@ $requestParser = new QueryParser($_SERVER['REQUEST_URI']);
 
 $requestUri = trim(strip_tags($_SERVER['REQUEST_URI']), '/');
 
-if (empty($requestUri)) {
+if (empty($requestParser->getUri()) && empty($requestParser->getQueryParams())) {
     require_once sprintf('%s/index.view.html', $viewsPath);
     return;
 }
 
-$queryString = explode('/', $requestUri)[0];
-
-if (!str_starts_with($queryString, '?')) {
+if (!empty($requestParser->getUri())) {
     require_once sprintf('%s/no-access.view.html', $viewsPath);
     return;
 }
 
-$queryParts = explode('&', str_replace('?', '', $queryString));
-$queryParams = [];
-
-foreach ($queryParts as $queryPart) {
-    $split = explode('=', $queryPart);
-
-    if (count($split) == 2) {
-        $queryParams[$split[0]] = $split[1];
-    }
+if (!$requestParser->getQueryParam('domain') || !$requestParser->getQueryParam('provider')) {
+    echo 'Request required the domain name and provider arguments';
+    return;
 }
 
-if (!isset($queryParams['domain']) || !isset($queryParams['provider'])) {
-    return false;
-}
-
-echo (new QueryHandler())->handleRequest($queryParams['domain'], $queryParams['provider']);
+echo (new QueryHandler())
+    ->handleRequest(
+        $requestParser->getQueryParam('domain'),
+        $requestParser->getQueryParam('provider')
+    );
