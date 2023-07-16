@@ -37,7 +37,7 @@ pipeline {
             steps {
                 catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
                     sh '''
-                    ssh jenkins@161.35.170.201 'sh cd /var/www/dns-check.winningsoftware.co.uk && git fetch && git pull && composer install && npm install && npm run build'
+                    ssh jenkins@161.35.170.201 'sh cd /var/www/dns-check.winningsoftware.co.uk/ && git fetch && git pull && composer install && npm install && npm run build'
                     '''
                 }
             }
