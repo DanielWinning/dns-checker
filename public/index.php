@@ -19,7 +19,7 @@ if (!empty($requestParser->getUri())) {
 }
 
 if (!$requestParser->getQueryParam('domain') || !$requestParser->getQueryParam('provider')) {
-    echo 'Request required the domain name and provider arguments';
+    echo 'unknown';
     return;
 }
 
