@@ -1,6 +1,6 @@
 import IDomainSearchResponse from './Interface/IDomainSearchResponse';
-import Servers from './Servers';
 import IServerObject from './Interface/IServerObject';
+import Servers from './Servers';
 
 export default class Searcher {
     searchButton: HTMLButtonElement;
