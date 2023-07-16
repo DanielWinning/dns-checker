@@ -37,7 +37,7 @@ pipeline {
         } finally {
             stage('Cleanup') {
                 steps {
-                    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    catchError(stageResult: 'FAILURE') {
                         sh '''
                         rm -r dns-tool
                         '''
