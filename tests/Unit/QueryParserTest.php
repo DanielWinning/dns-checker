@@ -1,6 +1,6 @@
 <?php
 
-namespace WinningSoftware\Tests;
+namespace WinningSoftware\Tests\Unit;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
