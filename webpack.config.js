@@ -22,5 +22,17 @@ module.exports = {
     output: {
         filename: 'app.js',
         path: path.resolve(__dirname, 'public/assets/js')
-    }
+    },
+    plugins: [
+        {
+            apply: (compiler) => {
+                compiler.hooks.done.tap('DonePlugin', (stats) => {
+                    console.log('Compile is done !')
+                    setTimeout(() => {
+                        process.exit(0)
+                    })
+                });
+            }
+        }
+    ]
 }
