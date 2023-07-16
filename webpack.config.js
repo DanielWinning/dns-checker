@@ -2,7 +2,6 @@ const path = require('path');
 
 module.exports = {
     entry: './assets/js/app.ts',
-    devtool: 'inline-source-map',
     watch: true,
     module: {
         rules: [
