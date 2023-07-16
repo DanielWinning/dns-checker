@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Checkout Repository') {
             steps {
                 cleanWs()
 
@@ -22,7 +22,7 @@ pipeline {
                 }
             }
         }
-        stage('PHP Unit Tests') {
+        stage('Run PHP Unit Tests') {
             steps {
                 catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
                     sh '''
@@ -33,7 +33,7 @@ pipeline {
                 junit 'dns-tool/results/phpunit.xml'
             }
         }
-        stage('Deploy') {
+        stage('Build & Deploy') {
             steps {
                 catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
                     sh '''
@@ -42,7 +42,7 @@ pipeline {
                 }
             }
         }
-        stage('Cleanup') {
+        stage('Cleanup Jenkins Workspace') {
             steps {
                 catchError(stageResult: 'FAILURE') {
                     sh '''
