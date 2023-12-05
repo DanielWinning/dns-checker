@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@dannyxcii/badger": "^0.4.1",
     "@types/react": "^18.2.15",
     "css-loader": "^6.8.1",
     "sass": "^1.63.6",
